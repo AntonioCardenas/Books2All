@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  magicUrl: 'pk_live_4C3D3B6CC05BD3EB',
+  SEED: ""
 };
 
 /*

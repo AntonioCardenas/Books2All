@@ -1,1 +1,16 @@
-<p>home works!</p>
+<mat-card class="home" *ngIf="authenticated">
+  <div>
+    <h2> Welcome </h2>
+    <h3> {{profile?.name}}</h3>
+    <h3> {{user?.email}}</h3>
+
+    <div style="padding: 1rem" *ngIf="moreData">
+      <h3> Please add more information to complete your profile </h3>
+      <button mat-raised-button color="primary" [routerLink]="['/profile']"><mat-icon>manage_accounts</mat-icon>Edit Account</button>
+    </div>
+<hr>
+  </div>
+
+</mat-card>
+
+

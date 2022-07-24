@@ -1,11 +1,21 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "cf4c3221-1eac-4a4f-887b-8f1d88fa59d6"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Books2All": {
+    "Book2All": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "css"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,16 +23,19 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/books2-all",
+            "outputPath": "dist/Book2All",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "css",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
+              "src/styles/overwrites.scss",
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -33,7 +46,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -64,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Books2All:build:production"
+              "browserTarget": "Book2All:build:production"
             },
             "development": {
-              "browserTarget": "Books2All:build:development"
+              "browserTarget": "Book2All:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Books2All:build"
+            "browserTarget": "Book2All:build"
           }
         },
         "test": {
@@ -85,11 +98,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "css",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -97,8 +112,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "9573332b-5692-45d2-aa36-cf4e886958d2"
   }
 }

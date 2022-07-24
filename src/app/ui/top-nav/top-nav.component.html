@@ -1,1 +1,61 @@
-<p>top-nav works!</p>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar-row>
+      <span>State Dapp</span>
+    </mat-toolbar-row>
+    <mat-nav-list>
+      <mat-list-item [routerLink]="['/home']" [routerLinkActive]="['active']">
+        <mat-icon>home</mat-icon>
+        Home
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/services']" [routerLinkActive]="['active']">
+        <mat-icon>work_history</mat-icon>
+        Services
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/profile']" [routerLinkActive]="['active']">
+        <mat-icon>manage_accounts</mat-icon>
+        Profile
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/notifications']" [routerLinkActive]="['active']">
+        <mat-icon>circle_notifications</mat-icon>
+        Notifications
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/help']" [routerLinkActive]="['active']">
+        <mat-icon>support_agent</mat-icon>
+        Get Help
+      </mat-list-item>
+      <br><br>
+      <mat-divider>
+      </mat-divider>
+      <mat-list-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        LogOut
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>MyGovDapp </span>
+      <span class="example-spacer"></span>
+      <!--<button mat-icon-button [routerLink]="['/account']">
+           <mat-icon>person</mat-icon>
+          </button> -->
+    </mat-toolbar>
+    <div class="p-6">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

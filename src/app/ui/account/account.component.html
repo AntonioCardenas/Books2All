@@ -1,1 +1,154 @@
-<p>account works!</p>
+<div class="flex flex-col flex-auto min-w-0">
+  <div class="flex flex-col shadow bg-card ">
+    <div><img src="assets/images/colorfull.jpeg" alt="Cover image" class="h-40 lg:h-80 object-cover profile"></div>
+    <div class="flex flex-col flex-0 lg:flex-row items-center max-w-5xl w-full mx-auto p-6 lg:h-18 bg-card">
+      <div class="-mt-20 lg:mt-22 rounded-full"><img
+        src="https://images.unsplash.com/photo-1600054800747-be294a6a0d26?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9"
+        alt="User avatar"
+        class="w-32 h-32 rounded-full ring-4 ring-bg-card"></div>
+      <div class="flex flex-col items-center lg:items-start mt-4 lg:mt-0 lg:ml-8" *ngIf="!loading">
+        <div class="text-lg font-bold leading-none">{{ user?.name }}</div>
+        <div class="text-lg font-bold leading-none">{{ user?.affiliations }}</div>
+        <div class="text-secondary">{{ user?.homeLocation}}</div>
+      </div>
+      <div class="flex flex-col items-center lg:items-start mt-4 lg:mt-0 lg:ml-8" *ngIf="loading">
+        <div class="text-lg font-bold leading-none">Loading ....</div>
+      </div>
+
+
+      <div class="hidden lg:flex h-8 mx-8 border-l-2"></div>
+      <div class="flex items-center mt-8 mb-4 lg:m-0 lg:ml-auto space-x-6">
+        <a class="font-medium" [routerLink]="['/home']" [routerLinkActive]="['active']"> Home </a>
+        <a class="text-secondary" [routerLink]="['/profile']" [routerLinkActive]="['active']">Edit Profile</a>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-auto w-full max-w-5xl mx-auto p sm:p-8 pt-2">
+    <div class="hidden lg:flex flex-col items-start mr-8">
+      <mat-card class="flex flex-col max-w-80 w-full p-8  ">
+        <div class="text-2xl font-semibold leading-tight  ">Your Participation</div>
+        <div class="mt-4">
+          We display the recent activity related to give feedback about regulations and rules
+          <br> Remember all the comments and feedback are stored in more than one public blockchain
+          <br>
+        </div>
+        <hr class="w-full border-t my-6">
+        <div class="flex flex-col my-3">
+          <div class="flex items-center">
+            <mat-icon role="img" class="mat-icon icon-size-5 mr-3 mat-icon-no-color" aria-hidden="true">history
+            </mat-icon>
+            <span class="leading-none">
+
+            </span>
+          </div>
+          <div class="flex items-center mt-4">
+            <mat-icon class="mat-icon icon-size-5 mr-3 mat-icon-no-color" aria-hidden="true">history
+            </mat-icon>
+            <span class="leading-none">
+
+            </span>
+          </div>
+          <div class="flex items-center mt-4">
+            <mat-icon class="mat-icon icon-size-5 mr-3 mat-icon-no-color" aria-hidden="true">history
+            </mat-icon>
+            <span class="leading-none">
+
+            </span>
+          </div>
+        </div>
+      </mat-card>
+
+
+    </div>
+    <div class="flex flex-col items-start">
+      <mat-card *ngIf="!loading"
+        class="flex flex-col md:flex-row justify-between max-w-80 md:max-w-160 w-full p-8 pb-4 ">
+        <div class="flex flex-col flex-auto order-2 md:order-1">
+          <div class="text-2xl font-semibold leading-tight">Link to MyColorado</div>
+        </div>
+        <mat-divider></mat-divider>
+<br>
+        <div class="order-1 md:order-2 w-full md:w-40 md:ml-6 mb-8 md:mb-4 rounded-lg overflow-hidden">
+          <img src="assets/images/id.png" alt="Card cover image"
+               class="w-full h-full object-cover"></div>
+      </mat-card>
+    </div>
+  </div>
+
+  <br>
+  <div *ngIf="!loading"
+    class="flex flex-wrap sm:flex-nowrap items-start w-full max-w-400  w-full max-w-5xl mx-auto p sm:p-8 bg-semi-black">
+    <div class="flex flex-col max-w-80 w-full m-2">
+      <div class="">
+        <mat-form-field
+          class="mat-form-field w-full  mat-primary mat-form-field-type-mat-input mat-form-field-appearance-fill mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
+          <div class="mat-form-field-wrapper bg-gray-300 rounded ">
+            <div class="mat-form-field-flex">
+              <div class="mat-form-field-infix">
+                <input matInput id="name" class="mat-input-element mat-form-field-autofill-control"
+                       [formControl]="name">
+                <span class="mat-form-field-label-wrapper -mx-3">
+                    <label class="mat-form-field-label" for="name">
+                      <mat-label class="font-bold text-white">Name</mat-label>
+                      <span aria-hidden="true"
+                            class="mat-placeholder-required mat-form-field-required-marker"> * </span>
+                    </label>
+                  </span>
+              </div>
+            </div>
+          </div>
+        </mat-form-field>
+        <mat-form-field
+          class="mat-form-field w-full  mat-primary mat-form-field-type-mat-input mat-form-field-appearance-fill mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
+          <div class="mat-form-field-wrapper bg-gray-300 rounded ">
+            <div class="mat-form-field-flex">
+              <div class="mat-form-field-infix">
+                <input matInput id="homeLocation" class="mat-input-element mat-form-field-autofill-control"
+                       [formControl]="home">
+                <span class="mat-form-field-label-wrapper -mx-3">
+                    <label class="mat-form-field-label" for="homeLocation">
+                      <mat-label class="font-bold text-white">State</mat-label>
+                      <span aria-hidden="true"
+                            class="mat-placeholder-required mat-form-field-required-marker"> * </span>
+                    </label>
+                  </span>
+              </div>
+            </div>
+          </div>
+        </mat-form-field>
+        <mat-form-field
+          class="mat-form-field w-full  mat-primary mat-form-field-type-mat-input mat-form-field-appearance-fill mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
+          <div class="mat-form-field-wrapper bg-gray-300 rounded ">
+            <div class="mat-form-field-flex">
+              <div class="mat-form-field-infix">
+                <textarea matInput id="bio" class="mat-input-element mat-form-field-autofill-control"
+                          [formControl]="bio"></textarea>
+                <span class="mat-form-field-label-wrapper -mx-3">
+                    <label class="mat-form-field-label" for="bio">
+                      <mat-label class="font-bold text-white">Bio</mat-label>
+                      <span aria-hidden="true"
+                            class="mat-placeholder-required mat-form-field-required-marker"> * </span>
+                    </label>
+                  </span>
+              </div>
+            </div>
+          </div>
+
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="flex flex-col max-w-80 w-full items-center">
+      <div>
+        <div class="m-4">
+          <button mat-raised-button color="secondary" class="bg-amber-600 hover:text-black hover:bg-amber-700 p-6"
+                  (click)="saveData()" [disabled]="!bio.valid && !home.valid && !name.valid">
+            <mat-icon>save</mat-icon>
+            Save Data
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
