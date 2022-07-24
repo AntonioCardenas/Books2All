@@ -12,17 +12,17 @@
   "private": true,
   "dependencies": {
     "@3id/connect": "^0.2.5",
-    "@angular-devkit/build-angular": "^13.2.4",
-    "@angular/animations": "~13.2.3",
-    "@angular/cdk": "^13.2.3",
-    "@angular/common": "~13.2.3",
-    "@angular/compiler": "~13.2.3",
-    "@angular/core": "~13.2.3",
-    "@angular/forms": "~13.2.3",
-    "@angular/material": "^13.2.3",
-    "@angular/platform-browser": "~13.2.3",
-    "@angular/platform-browser-dynamic": "~13.2.3",
-    "@angular/router": "~13.2.3",
+    "@angular-devkit/build-angular": "^14.1.0",
+    "@angular/animations": "^14.1.0",
+    "@angular/cdk": "^14.1.0",
+    "@angular/common": "^14.1.0",
+    "@angular/compiler": "^14.1.0",
+    "@angular/core": "^14.1.0",
+    "@angular/forms": "^14.1.0",
+    "@angular/material": "^14.1.0",
+    "@angular/platform-browser": "^14.1.0",
+    "@angular/platform-browser-dynamic": "^14.1.0",
+    "@angular/router": "^14.1.0",
     "@ceramicnetwork/ceramic-core": "^0.12.4",
     "@glazed/devtools": "^0.1.6",
     "@glazed/did-datastore-model": "^0.1.1",
@@ -41,8 +41,8 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular/cli": "^13.2.4",
-    "@angular/compiler-cli": "~13.2.3",
+    "@angular/cli": "^14.1.0",
+    "@angular/compiler-cli": "^14.1.0",
     "@ceramicnetwork/3id-did-resolver": "^1.4.16",
     "@ceramicnetwork/http-client": "^1.5.7",
     "@datamodels/identity-accounts-crypto": "^0.1.2",
@@ -73,6 +73,6 @@
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
     "tailwindcss": "^3.0.23",
-    "typescript": "~4.5.5"
+    "typescript": "~4.7.4"
   }
 }

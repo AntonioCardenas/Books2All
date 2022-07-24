@@ -60,9 +60,9 @@ export class AccountComponent implements OnInit {
 
   async getCeramicData(){
    await this.id.getProfileData().then((response => {
-     this.bio.setValue(response?.['bio']);
-     this.name.setValue(response?.name);
-      this.home.setValue(response?.homeLocation);
+     //this.bio.setValue(response?.['bio']);
+     this.name.setValue(response?.name ?? 'No name');
+      this.home.setValue(response?.homeLocation || 'Home');
      this.user = response
      this.loading = false
     }));
