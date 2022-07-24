@@ -110,6 +110,13 @@ export class GlazeService {
             "type": "string",
             "maxItems": 5
           }
+        },
+        "booksOwned": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+          }
         }
       },
     })
