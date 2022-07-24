@@ -25,6 +25,7 @@ export class GlazeService {
     await did.authenticate()
     const manager = new ModelManager(ceramic)
 
+    // This is for editorials with the propourse of upload books URI to attach to the book in the soulbound contract and have the posibility to give and revoke access
     // @ts-ignore
     await manager.createSchema('BooksLending', {
       $schema: 'http://json-schema.org/draft-07/schema#',
