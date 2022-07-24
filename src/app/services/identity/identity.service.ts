@@ -68,12 +68,13 @@ export class IdentityService {
   async updateProfile(data:any) {
     this.getAuth().then(self => {
       const user = {
-        bio: data.bio || "",
         name: data.name || "",
-        affiliations: data.aft || ['Citizen'],
-        nationalities: data.nct || ['HN'],
-        homeLocation: data.home || 'denver',
-        gender: data.gender || 'prefer not say',
+        status: data.aft || ['Student'],
+        books: data.books || [],
+        lastLogin: Date.now(),
+        preferences: data.preferences || [],
+        booksRead: data.booksRead || [],
+        poaps: data.poaps || [],
       }
       self.set('basicProfile', user);
     });
