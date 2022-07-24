@@ -39,7 +39,6 @@ export class HomeComponent implements OnInit {
       if (value === true) {
         this.authenticated = value
         this.callAccount();
-        this.connectAccount()
       } else {
         this.authenticated = value
         this.user = undefined;
@@ -60,10 +59,6 @@ export class HomeComponent implements OnInit {
     })
   }
 
-
-  async connectAccount() {
-
-  }
 
   async getDetails(account: any[]) {
     await this.identity.connect3id().then((value => {

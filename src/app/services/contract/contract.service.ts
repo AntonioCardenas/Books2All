@@ -6,9 +6,7 @@ import Web3Modal from 'web3modal';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import {provider} from 'web3-core';
 
-const norweezNFT = ''//
-//
-//require('../../../../contracts/Norweez.json');
+//require('../../../../contracts/Books.json');
 const NFT_PRICE = 0
 
 @Injectable({
@@ -17,7 +15,7 @@ const NFT_PRICE = 0
 export class ContractService {
     public accountsObservable = new Subject<string[]>();
 
-    contractDir: string = '0xa55f52461c265e9d838a37a2c886b16431b55661'
+    contractDir: string = ''
     web3Modal;
     web3js: any;
     provider: provider | undefined;
@@ -57,7 +55,7 @@ export class ContractService {
             walletlink: {
                 package: '',
                 options: {
-                    appName: 'Norweez', // Required
+                    appName: 'Books2all', // Required
                     infuraId: '27e484dcd9e3efcfd25a83a78777cdf1', // Required unless you provide a JSON RPC url; see `rpc` below
                     network: 'ropsten',
                     darkMode: true,
@@ -86,12 +84,12 @@ export class ContractService {
             this.web3js = new Web3(<any>this.provider);
         } // create web3 instance
 
-        this.gasLimit = await this.web3js.eth.getBlock("latest").then(
+        this.gasLimit = await this.web3js?.eth.getBlock("latest").then(
             (result: { gasLimit: any; }) => {
                 this.gasNow = result.gasLimit
             }
         );
-        this.accounts = await this.web3js.eth.getAccounts();
+        this.accounts = await this.web3js?.eth.getAccounts();
         return this.accounts;
     }
 

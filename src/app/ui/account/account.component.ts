@@ -22,7 +22,6 @@ import { RouterModule } from '@angular/router';
 export class AccountComponent implements OnInit {
   name = new FormControl('', [Validators.required]);
   preferred = new FormControl('', [Validators.required]);
-  bio = new FormControl('', [Validators.required]);
 
   public user: any;
   public userMagic: any;
@@ -66,9 +65,8 @@ export class AccountComponent implements OnInit {
 
   async getCeramicData(){
    await this.id.getProfileData().then((response => {
-     this.name.setValue(response?.name ?? 'No name');
-      this.preferred.setValue(response?.homeLocation || 'Home');
-     this.user = response
+     this.name.setValue(response?.name ?? '');
+      this.user = response
      console.log(this.user)
      this.loading = false
     }));
@@ -76,14 +74,16 @@ export class AccountComponent implements OnInit {
 
   saveData(){
     const user = {
-      bio: this.bio.value,
       name: this.name.value,
       status: this.user.status,
       preferences: this.preferred.value,
       booksRead: [ "Marry Shelley's Frankenstein", "The Lord of the Rings", "The Hobbit" ],
       lastLogin: Date.now(),
       gender: this.user.gender,
+
     }
+    this.name.reset();
+    this.preferred.reset();
     this.id.updateProfile(user);
     console.log(user)
   }

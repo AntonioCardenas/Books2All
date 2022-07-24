@@ -56,7 +56,7 @@
     <div class="hidden lg:flex flex-col items-start mr-8">
       <mat-card class="flex flex-col max-w-80 w-full p-8">
         <div class="text-2xl font-semibold leading-tight">
-          Your Participation
+          Your Recent Activity
         </div>
         <div class="mt-4">
           We display the recent activity related to books and lecture activities
@@ -74,8 +74,7 @@
               >history
             </mat-icon>
             <span class="leading-none">
-
-              {{ user?.booksRead }}
+              {{ user?.booksRead?.[0] }}
             </span>
           </div>
           <div class="flex items-center mt-4">
@@ -84,7 +83,10 @@
               aria-hidden="true"
               >history
             </mat-icon>
-            <span class="leading-none"> </span>
+            <span class="leading-none">
+              {{ user?.booksRead?.[1] }}
+
+            </span>
           </div>
           <div class="flex items-center mt-4">
             <mat-icon
@@ -92,7 +94,9 @@
               aria-hidden="true"
               >history
             </mat-icon>
-            <span class="leading-none"> </span>
+            <span class="leading-none">
+              {{ user?.booksRead?.[2] }}
+            </span>
           </div>
         </div>
       </mat-card>
@@ -108,7 +112,7 @@
           class="order-1 md:order-2 w-full md:w-40 md:ml-6 mb-8 md:mb-4 rounded-lg overflow-hidden"
         >
           <img
-            src=""
+            src="https://avatars.githubusercontent.com/u/71664718?s=200&v=4"
             alt="Card cover image"
             class="w-full h-full object-cover"
           />
@@ -122,89 +126,27 @@
     *ngIf="!loading"
     class="flex flex-wrap sm:flex-nowrap items-start w-full max-w-400 w-full max-w-5xl mx-auto p sm:p-8 bg-semi-black"
   >
-    <div class="flex flex-col max-w-80 w-full m-2">
-      <div class="">
-        <mat-form-field
-          class="mat-form-field w-full mat-primary mat-form-field-type-mat-input mat-form-field-appearance-fill mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label"
-        >
-          <div class="mat-form-field-wrapper bg-gray-300 rounded">
-            <div class="mat-form-field-flex">
-              <div class="mat-form-field-infix">
-                <input
-                  matInput
-                  id="name"
-                  class="mat-input-element mat-form-field-autofill-control"
-                  [formControl]="name"
-                />
-                <span class="mat-form-field-label-wrapper -mx-3">
-                  <label class="mat-form-field-label" for="name">
-                    <mat-label class="font-bold text-white">Name</mat-label>
-                    <span
-                      aria-hidden="true"
-                      class="mat-placeholder-required mat-form-field-required-marker"
-                    >
-                      *
-                    </span>
-                  </label>
-                </span>
-              </div>
-            </div>
-          </div>
-        </mat-form-field>
-        <mat-form-field
-          class="mat-form-field w-full mat-primary mat-form-field-type-mat-input mat-form-field-appearance-fill mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label"
-        >
-          <div class="mat-form-field-wrapper bg-gray-300 rounded">
-            <div class="mat-form-field-flex">
-              <div class="mat-form-field-infix">
-                <input
-                  matInput
-                  id="preferred"
-                  class="mat-input-element mat-form-field-autofill-control"
-                  [formControl]="preferred"
-                />
-                <span class="mat-form-field-label-wrapper -mx-3">
-                  <label class="mat-form-field-label" for="preferred">
-                    <mat-label class="font-bold text-white">Preferences</mat-label>
-                    <span
-                      aria-hidden="true"
-                      class="mat-placeholder-required mat-form-field-required-marker"
-                    >
-                      *
-                    </span>
-                  </label>
-                </span>
-              </div>
-            </div>
-          </div>
-        </mat-form-field>
-        <mat-form-field
-          class="mat-form-field w-full mat-primary mat-form-field-type-mat-input mat-form-field-appearance-fill mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label"
-        >
-          <div class="mat-form-field-wrapper bg-gray-300 rounded">
-            <div class="mat-form-field-flex">
-              <div class="mat-form-field-infix">
-                <textarea
-                  matInput
-                  id="bio"
-                  class="mat-input-element mat-form-field-autofill-control"
-                  [formControl]="bio"
-                ></textarea>
-                <span class="mat-form-field-label-wrapper -mx-3">
-                  <label class="mat-form-field-label" for="bio">
-                    <mat-label class="font-bold text-white">Bio</mat-label>
-                    <span
-                      aria-hidden="true"
-                      class="mat-placeholder-required mat-form-field-required-marker"
-                    >
-                      *
-                    </span>
-                  </label>
-                </span>
-              </div>
-            </div>
-          </div>
-        </mat-form-field>
+  <form class="w-full max-w-lg">
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+          Your Name
+        </label>
+        <input id="name" [formControl]="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="Jane">
+        <p *ngIf="!name.valid"class="text-red-500 text-xs italic">Please fill out this field.</p>
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+          Preferred Category
+        </label>
+        <select id="preferred" [formControl]="preferred" class="bg-gray-200 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-200 dark:border-gray-100 dark:placeholder-gray-400 dark:text-gray-700 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option value="" disabled> Select</option>
+          <option value="Scifi">Sci-Fi</option>
+          <option value="Terror">Terror</option>
+          <option value="Drama">Drama</option>
+          <option value="History">History</option>
+          <option value="Science">Science</option>
+        </select>
       </div>
     </div>
 
@@ -212,11 +154,9 @@
       <div>
         <div class="m-4">
           <button
-            mat-raised-button
-            color="secondary"
-            class="bg-amber-600 hover:text-black hover:bg-amber-700 p-6"
+            class="flex items-center rounded-lg bg-indigo-500 px-4 py-2 text-white"
             (click)="saveData()"
-            [disabled]="!bio.valid && !preferred.valid && !name.valid"
+            [disabled]="!preferred.valid && !name.valid"
           >
             <mat-icon>save</mat-icon>
             Save Data
@@ -224,5 +164,8 @@
         </div>
       </div>
     </div>
+
+  </form>
+
   </div>
-</div>
+  </div>
