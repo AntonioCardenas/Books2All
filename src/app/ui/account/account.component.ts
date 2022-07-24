@@ -1,21 +1,27 @@
-import {Component, Input, OnInit,} from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import {Component, OnInit,} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 // Services
 import { ContractService } from "./../../services/contract/contract.service";
 import { IdentityService } from "../../services/identity/identity.service";
 import { MagicService } from "../../services/magic/magic.service";
 
+// Material
+import { AppMaterialModule } from 'src/app/app-material.module';
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-account',
+  standalone: true,
+  imports: [CommonModule , AppMaterialModule, FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
 
 export class AccountComponent implements OnInit {
   name = new FormControl('', [Validators.required]);
-  home = new FormControl('', [Validators.required]);
+  preferred = new FormControl('', [Validators.required]);
   bio = new FormControl('', [Validators.required]);
 
   public user: any;
@@ -60,10 +66,10 @@ export class AccountComponent implements OnInit {
 
   async getCeramicData(){
    await this.id.getProfileData().then((response => {
-     //this.bio.setValue(response?.['bio']);
      this.name.setValue(response?.name ?? 'No name');
-      this.home.setValue(response?.homeLocation || 'Home');
+      this.preferred.setValue(response?.homeLocation || 'Home');
      this.user = response
+     console.log(this.user)
      this.loading = false
     }));
   }
@@ -72,9 +78,10 @@ export class AccountComponent implements OnInit {
     const user = {
       bio: this.bio.value,
       name: this.name.value,
-      home: this.home.value,
-      aft: this.user.affiliations,
-      nct: this.user.nationalities,
+      status: this.user.status,
+      preferences: this.preferred.value,
+      booksRead: [ "Marry Shelley's Frankenstein", "The Lord of the Rings", "The Hobbit" ],
+      lastLogin: Date.now(),
       gender: this.user.gender,
     }
     this.id.updateProfile(user);

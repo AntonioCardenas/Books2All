@@ -1,10 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {ContractService} from "./../../services/contract/contract.service";
-import {IdentityService} from "../../services/identity/identity.service";
-import {MagicService} from "../../services/magic/magic.service";
+import { Component, OnInit} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ContractService } from "./../../services/contract/contract.service";
+import { IdentityService } from "../../services/identity/identity.service";
+import { MagicService } from "../../services/magic/magic.service";
+
+// Modules
+import { RouterModule } from '@angular/router';
+import { AppMaterialModule } from 'src/app/app-material.module';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule, RouterModule , AppMaterialModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

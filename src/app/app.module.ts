@@ -5,7 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppMaterialModule } from "./app-material.module";
 import { AppRoutingModule } from './app-routing.module';
-import { UiModule } from "./ui/ui.module";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from './ui/login/login.component';
+import { TopNavComponent } from './ui/top-nav/top-nav.component';
 
 @NgModule({
   declarations: [
@@ -13,10 +16,14 @@ import { UiModule } from "./ui/ui.module";
   ],
   imports: [
     AppRoutingModule,
+    LoginComponent,
+    TopNavComponent,
     AppMaterialModule,
     BrowserModule,
     BrowserAnimationsModule,
-    UiModule
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

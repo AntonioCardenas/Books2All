@@ -26,9 +26,9 @@ export class GlazeService {
     const manager = new ModelManager(ceramic)
 
     // @ts-ignore
-    await manager.createSchema('ColorData', {
+    await manager.createSchema('BooksLending', {
       $schema: 'http://json-schema.org/draft-07/schema#',
-      title: 'ColorData',
+      title: 'BookLending',
       type: 'object',
       properties: {
         "name": {
@@ -43,7 +43,7 @@ export class GlazeService {
           "title":"verified",
           "default": false
         },
-        "merchant_id": {
+        "membership_id": {
           "type": "number",
           "enum": [
             1,
@@ -69,9 +69,13 @@ export class GlazeService {
           "type": "string",
           "maxLength": 42
         },
-        "homeLocation": {
-          "type": "string",
-          "maxLength": 140
+        "preferences": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "maxItems": 5
+          }
         },
         "residenceCountry": {
           "type": "string",
@@ -86,24 +90,25 @@ export class GlazeService {
             "maxItems": 5
           }
         },
-        "comments": {
+        "lendings": {
           "type": "array",
           "items": {
             "type": "string",
           }
         },
-        "affiliations": {
+        "loans": {
           "type": "array",
           "items": {
             "type": "string",
             "maxLength": 140
           }
         },
-        "stockBrands": {
+        "poaps": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "type": "string",
-            "maxLength": 140
+            "maxItems": 5
           }
         }
       },
