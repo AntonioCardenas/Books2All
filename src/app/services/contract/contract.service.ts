@@ -67,7 +67,7 @@ export class ContractService {
         };
 
         this.web3Modal = new Web3Modal({
-            network: 'ropsten', // optional
+            network: 'mumbai', // optional
             providerOptions, // required
             theme: {
                 background: 'rgb(39, 49, 56)',

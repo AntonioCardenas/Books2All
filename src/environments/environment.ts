@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  magicUrl: 'pk_live_4C3D3B6CC05BD3EB',
+  magicUrl: 'pk_live_1111963A6F69582F',
   SEED: ""
 };
 
