@@ -74,19 +74,25 @@ export class MyBooksComponent implements OnInit {
 
 
   saveData(){
+    this.user.books.push([{"title": this.title.value,
+    "category": this.category.value,
+    "author": this.author.value,
+    "pages": this.pages.value,
+    "editorial": this.editorial.value,
+    "description": this.description.value,
+    "pdf": this.pdf.value,
+    "image": this.image.value,}]);
+
     const userBook = {
+      name: this.user.name,
+      status: this.user.status,
+      preferences: this.user.preferences,
+      booksRead: [ "Marry Shelley's Frankenstein", "The Lord of the Rings", "The Hobbit" ],
       lastLogin: Date.now(),
-      books: [{
-        "title": this.title.value,
-        "category": this.category.value,
-        "author": this.author.value,
-        "pages": this.pages.value,
-        "editorial": this.editorial.value,
-        "description": this.description.value,
-        "pdf": this.pdf.value,
-        "image": this.image.value,
-      }]
+      gender: this.user.gender,
+      books:[ this.user.books],
     }
+    console.log(this.user.books)
     this.title.reset();
     this.category.reset();
     this.author.reset();
