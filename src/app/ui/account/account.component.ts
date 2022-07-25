@@ -80,6 +80,7 @@ export class AccountComponent implements OnInit {
       booksRead: [ "Marry Shelley's Frankenstein", "The Lord of the Rings", "The Hobbit" ],
       lastLogin: Date.now(),
       gender: this.user.gender,
+      books: this.user.books
 
     }
     this.name.reset();
@@ -87,9 +88,5 @@ export class AccountComponent implements OnInit {
     this.id.updateProfile(user);
     console.log(user)
   }
-
-
-
-
 
 }

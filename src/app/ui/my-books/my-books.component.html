@@ -1,1 +1,166 @@
-<p>my-books works!</p>
+<div class="mt-10 sm:mt-0">
+  <div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:col-span-1">
+      <div class="px-4 sm:px-0">
+        <h3 class="text-lg font-medium leading-6 text-white-100">Add Books</h3>
+        <p class="mt-1 text-sm text-gray-600">
+          You can submit a book using this form
+        </p>
+      </div>
+    </div>
+    <div class="mt-5 md:mt-0 md:col-span-2">
+      <form>
+        <div class="shadow overflow-hidden sm:rounded-md">
+          <div class="px-4 py-5 bg-white sm:p-6">
+            <div class="grid grid-cols-6 gap-6">
+              <div class="col-span-6 sm:col-span-3">
+                <label
+                  for="title"
+                  class="block text-sm font-medium text-gray-700"
+                  >Title</label
+                >
+                <input
+                  type="text"
+                  [formControl]="title"
+                  name="title"
+                  id="title"
+                  autocomplete="title"
+                  class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-700"
+                />
+              </div>
+
+              <div class="col-span-6 sm:col-span-3">
+                <label
+                  for="category"
+                  class="block text-sm font-medium text-gray-700"
+                  >Category</label
+                >
+                <select
+                name="category"
+                  id="category"
+                  [formControl]="category"
+                  autocomplete="category"
+                  class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-700"
+                >
+                <option value="" disabled> Select</option>
+                <option value="Scifi">Sci-Fi</option>
+                <option value="Terror">Terror</option>
+                <option value="Drama">Drama</option>
+                <option value="History">History</option>
+                <option value="Science">Science</option>
+                </select>
+              </div>
+
+              <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                <label
+                  for="author"
+                  class="block text-sm font-medium text-gray-700"
+                  >Autor</label
+                >
+                <input
+                  type="text"
+                  [formControl]="author"
+                  name="author"
+                  id="author"
+                  autocomplete="address-level2"
+                  class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-700"
+                />
+              </div>
+
+              <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                <label
+                  for="pages"
+                  class="block text-sm font-medium text-gray-700"
+                  >Duration in pages</label
+                >
+                <input
+                  type="number"
+                  [formControl]="pages"
+                  name="pages"
+                  id="pages"
+                  autocomplete="page-number"
+                  min="0"
+                  class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-700"
+                />
+              </div>
+
+              <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                <label
+                  for="editorial"
+                  class="block text-sm font-medium text-gray-700"
+                  >Editorial</label
+                >
+                <input
+                  type="text"
+                  [formControl]="editorial"
+                  name="editorial"
+                  id="editorial"
+                  autocomplete="editorial"
+                  class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-700"
+                />
+              </div>
+
+              <div class="col-span-6">
+                <label
+                  for="description"
+                  class="block text-sm font-medium text-gray-700"
+                  >Description</label
+                >
+                <textArea
+                  [formControl]="description"
+                  name="description"
+                  id="description"
+                  rows="5"
+                  cols="60"
+                  class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-700"
+                  required
+                >
+                </textArea>
+              </div>
+            </div>
+            <br />
+
+            <div class="col-span-6 sm:col-span-4">
+              <label for="pdf" class="block text-sm font-medium text-gray-700"
+                >PDF Url</label
+              >
+              <input
+                type="text"
+                [formControl]="pdf"
+                id="pdf"
+                name="pdf"
+                autocomplete="email"
+                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-700"
+              />
+            </div>
+            <br />
+
+            <div class="col-span-6 sm:col-span-4">
+              <label for="image" class="block text-sm font-medium text-gray-700"
+                >Image URL</label
+              >
+              <input
+                type="text"
+                [formControl]="image"
+                name="image"
+                id="image"
+                autocomplete="email"
+                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-700"
+              />
+            </div>
+            <br />
+          </div>
+          <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <button
+            (click)="saveData()"
+            [disabled]="!title.valid && !author.valid && !category.valid && !pages.valid && !editorial.valid && !description.valid && !pdf.valid && !image.valid"
+              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
